@@ -25,3 +25,23 @@ Dockerized version of the good old PAMP stack to get you up and running in no ti
 
 SQL files inside the `mysql` directory will be executed on docker-compose up (with some caveats). This is particularly useful to create an initial database and/or tables.
 If you want to use another db's name (other than Camagru), modify the environment in docker-compose.yaml
+
+# Edit vhost file to solve Forbidden errors:
+
+<VirtualHost *:80>
+  DocumentRoot /docker-pamp/src
+  <Directory /docker-pamp/src>
+  		AllowOverride All
+		Require all granted
+		Allow from all
+    <IfModule mod_rewite.c>
+      Options -Multiviews
+      RewriteEngine On
+      RewriteCond %{REQUEST_FILENAME} !-f
+      RewriteRule ^(.*)$ index.php [QSA,L]
+    </IfModule>
+  </Directory>
+
+  ErrorLog /var/log/apache2/docker_pamp_error.log
+  CustomLog /var/log/apache2/docker_pamp_access.log combined
+</VirtualHost>
