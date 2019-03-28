@@ -12,14 +12,12 @@ Dockerized version of the good old PAMP stack to get you up and running in no ti
 ## Getting started
 
 1. Create a symlink named `src` from the PHP project into the `docker-pamp` directory:    ln -s /Path/to/PHP/project docker-pamp/src
-
-2. Copy default configuration files into the PHP docker directory:     cp docker-pamp/defaults/* docker-pamp/php71
         
-3. Bring up the AMP7.1 stack. It use the same port 80:      docker-compose up php71
+2. Bring up the AMP7.1 stack. It use the same port 80:      docker-compose up php71
         
-4. Checkout your website at `127.0.0.1`
+3. Checkout your website at `127.0.0.1`
 
-5. Checkout your DB with phpMyAdmin at `localhost:8081`
+4. Checkout your DB with phpMyAdmin at `localhost:8081`
 
 # Initializing a database
 
